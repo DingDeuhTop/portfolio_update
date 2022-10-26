@@ -26,12 +26,12 @@ class UpdateSkillRequest extends FormRequest
      */
     public function rules(Skill $skill)
     {
-        $image = $skill->image;
+        // $image = $skill->image;
         
-        if (request()->hasFile('image')) {
-            // Storage::delete($skill->image);
-            $image = request()->file('image')->store('skills', ['disk' => 'public']);
-        }
+        // if (request()->hasFile('image')) {
+        //     // Storage::delete($skill->image);
+        //     $image = request()->file('image')->store('skills', ['disk' => 'public']);
+        // }
 
         return [
             'image' => ['required', 'image'],
