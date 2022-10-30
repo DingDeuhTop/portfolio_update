@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use App\Services\Master\ProjectsService;
 
 use function Termwind\render;
 
@@ -35,8 +36,11 @@ class ProjectController extends Controller
         //     'image' => ['required', 'image'],
         //     'skill_id' => ['required']
         // ]);
+        $project_service = new ProjectsService;
+
+
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('projects', ['disk' => 'public']);
+            $image = $project_service->upload_image($request);
             Project::create(array_merge($request->only('name', 'skill_id'), ['image' => $image]));
             return Redirect::route('projects.index');
         }
@@ -53,9 +57,10 @@ class ProjectController extends Controller
     {
         $image = $project->image;
 
+        $project_service = new ProjectsService;
         if ($request->hasFile('image')) {
             Storage::delete($project->image);
-            $image = $request->file('image')->store('projects', ['disk' => 'public']);
+            $image = $project_service->upload_image($request);
         }
         $project->update(array_merge($request->only('name', 'skill_id'), ['image' => $image]));
         return Redirect::route('projects.index');

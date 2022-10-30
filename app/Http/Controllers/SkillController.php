@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use App\Services\Master\SkillService;
 
 class SkillController extends Controller
 {
@@ -30,13 +31,19 @@ class SkillController extends Controller
         //     'image' => ['required', 'image'],
         //     'name' => ['required', 'min:3 ']
         // ]);
+        $skill_service = new SkillService;
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('skills', ['disk' => 'public']);
+            $image = $skill_service->upload_image($request);
             Skill::create(array_merge($request->only('name'), ['image' => $image]));
             return Redirect::route('skills.index')->with('message', 'Skill Created Successfully');
         }
         return Redirect::back()->with('message', 'Created Successfully');
+    }
+
+    public function show(Skill $skill)
+    {
+        return SkillResource::make($skill);
     }
 
     public function edit(Skill $skill)
@@ -47,13 +54,15 @@ class SkillController extends Controller
     public function update(UpdateSkillRequest $request, Skill $skill)
     {
         $image = $skill->image;
+
+        $skill_service = new SkillService;
         // $request->validate([
         //     'name' => ['required', 'min:3']
         // ]);
 
         if ($request->hasFile('image')) {
             Storage::delete($skill->image);
-            $image = $request->file('image')->store('skills', ['disk' => 'public']);
+            $image = $skill_service->upload_image($request);
         }
         $skill->update(array_merge($request->only('name'), ['image' => $image]));
 
