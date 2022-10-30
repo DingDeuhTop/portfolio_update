@@ -47,16 +47,16 @@ defineProps({
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row"
                                     class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ owner.id }}
+                                    {{ owner?.id }}
                                 </th>
                                 <td class="py-4 px-6">
-                                    {{ owner.name }}
+                                    {{ owner?.name }}
                                 </td>
                                 <td class="py-4 px-6">
-                                    {{ owner.skill.name }}
+                                    {{ owner.skill?.name }}
                                 </td>
                                 <td class="py-4 px-6">
-                                    {{ owner.project.name }}
+                                    {{ owner.project?.name }}
                                 </td>
                                 <td class="py-4 px-6">
                                     <Link :href="route('owners.edit', owner.id)"
