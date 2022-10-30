@@ -49,10 +49,10 @@ defineProps({
                                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{skill.id}}
+                                            {{ skill.id }}
                                         </th>
                                         <td class="py-4 px-6">
-                                            {{skill.name}}
+                                            {{ skill.name }}
                                         </td>
                                         <td class="py-4 px-6">
                                             <img :src="skill.image" alt="Skill">
@@ -60,8 +60,8 @@ defineProps({
                                         <td class="py-4 px-6">
                                             <Link :href="route('skills.edit', skill.id)"
                                                 class="font-medium text-blue-500 hover:text-blue-700 mr-2">Edit</Link>
-                                            <Link :href="route('skills.destroy', skill.id)" method="delete" as="button"
-                                                type="button" class="font-medium text-red-500 hover:text-red-700 mr-2">
+                                            <Link :href="route('skills.destroy', skill.id)" method="delete"
+                                                class="font-medium text-red-500 hover:text-red-700 mr-2">
                                             Delete</Link>
                                         </td>
                                     </tr>
