@@ -18,4 +18,14 @@ class Skill extends Model
     {
         return $this->hasMany(Project::class);
     }
+
+    // public function skill()
+    // {
+    //     return $this->belongsTo(Skill::class);
+    // }
+
+    public function owners()
+    {
+        return $this->hasManyThrough(Owner::class, Project::class);
+    }
 }

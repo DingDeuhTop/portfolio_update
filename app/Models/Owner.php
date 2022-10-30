@@ -5,24 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Owner extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'skill_id',
-        'name',
-        'image',
-        'project_url'
-    ];
+    protected $fillable = ['name', 'skill_id', 'project_id'];
 
     public function skill()
     {
         return $this->belongsTo(Skill::class);
     }
 
-    public function owner()
+    public function project()
     {
-        return $this->hasManyThrough(Owner::class, Skill::class);
+        return $this->belongsTo(Project::class);
     }
 }

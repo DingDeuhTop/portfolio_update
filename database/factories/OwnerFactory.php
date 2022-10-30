@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Owner;
+use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Owner>
  */
-class ProjectFactory extends Factory
+class OwnerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,10 +19,9 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
+            'name' => $this->faker->word(''),
             'skill_id' => Skill::factory(),
-            'name' => $this->faker->word(),
-            'image' => Skill::factory(),
-            'project_url' => $this->faker->url()
+            'project_id' => Project::factory()
         ];
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\WelcomeController;
@@ -27,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('/skills', SkillController::class);
     Route::resource('/projects', ProjectController::class);
+    Route::resource('/owners', OwnerController::class);
 });
 
 
