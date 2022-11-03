@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Owner;
 use App\Models\Project;
 use App\Models\Skill;
+use App\Models\Task;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         Skill::factory(3)->create();
         Project::factory(3)->create();
         Owner::factory(3)->create();
+        Task::factory(3)->create();
 
         \App\Models\User::factory()->create([
             'name' => 'Test User',

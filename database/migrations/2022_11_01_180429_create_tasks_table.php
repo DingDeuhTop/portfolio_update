@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Owner;
 use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Database\Migrations\Migration;
@@ -15,12 +16,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('owners', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignIdFor(Skill::class);
-            $table->foreignIdFor(Project::class);
-            $table->softDeletes();
+            $table->string('title');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('owners');
+        Schema::dropIfExists('tasks');
     }
 };

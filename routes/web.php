@@ -3,6 +3,7 @@
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/skills', SkillController::class);
     Route::resource('/projects', ProjectController::class);
     Route::resource('/owners', OwnerController::class);
+    Route::resource('/tasks', TaskController::class);
 });
 
 
