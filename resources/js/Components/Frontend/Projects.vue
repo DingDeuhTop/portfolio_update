@@ -33,10 +33,10 @@ const filterProjects = (id) => {
                         All
                     </button>
                 </li>
-                <li class="cursor-pointer capitalize m-4" v-for="projectSkill in skills.data" :key="projectSkill.id">
+                <li class="cursor-pointer capitalize m-4" v-for="(projectSkill, index) in skills.data" :key="index.id">
                     <button class="flex text-center px-4 py-2 hover:text-light-tail-500 dark:text-dark-navy-100"
                         :class="[selectedSkill == 'all' ? 'text-light-tail-500 dark:text-dark-navy-100' : '']"
-                        @click="filterProjects('all')">
+                        @click="filterProjects('all')" v-if="index <= 7">
                         {{ projectSkill.name }}
                     </button>
                 </li>
