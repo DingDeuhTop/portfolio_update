@@ -17,8 +17,8 @@ return new class extends Migration
     {
         Schema::create('owner_task', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Owner::class);
-            $table->foreignIdFor(Task::class);
+            $table->foreignIdFor(Owner::class)->constrained();
+            $table->foreignIdFor(Task::class)->constrained();
             $table->timestamps();
         });
     }
