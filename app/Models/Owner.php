@@ -22,4 +22,9 @@ class Owner extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+    public function tasks()
+    {
+        return $this->belongsToMany(Task::class);
+    }
 }

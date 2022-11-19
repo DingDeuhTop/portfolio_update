@@ -17,8 +17,6 @@ class TaskResource extends JsonResource
         return [
             'title' => $this->title,
             'image' => assert('/storage/' . $this->image),
-            'skill' => $this->whenLoaded('skill'),
-            'project' => $this->whenLoaded('project'),
             'owner' => $this->whenLoaded('owner')
         ];
     }

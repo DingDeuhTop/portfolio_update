@@ -19,6 +19,8 @@ const form = useForm({
     project_id: props.owner?.project_id
 })
 
+console.log(form)
+
 const submit = () => {
     Inertia.post(`/owners/${props.owner.id}`, {
         _method: "patch",

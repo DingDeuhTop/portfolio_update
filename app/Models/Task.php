@@ -4,15 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
 
-    public function projects()
+    public function owners()
     {
-        return $this->belongsToMany(Project::class, 'project_tasks');
+        return $this->belongsToMany(Owner::class);
     }
 }
